@@ -1,5 +1,5 @@
 resource "aws_kinesis_firehose_delivery_stream" "cloudwatch_to_s3_stream" {
-  count = "${length(var.logs)}"
+  count = "${var.count == 0 ? 0 : length(var.logs)}"
 
   name        = "${var.mod_prefix}-cloudwatch-logging${count.index + 1}"
   destination = "extended_s3"
