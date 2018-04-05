@@ -41,3 +41,9 @@ variable "count" {
   type        = "string"
   default     = 1
 }
+
+variable "compression_method" {
+  description = "valid types: [ZIP, Snappy, GZIP, UNCOMPRESSED]"
+  type        = "string"
+  default     = "GZIP"
+}
