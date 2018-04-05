@@ -25,6 +25,6 @@ This module creates the AWS infrastructure required to epxort Cloudwatch log eve
 
 | Name | Description |
 |------|-------------|
-| cloudwatch_to_firehose_arn |  |
-| firehose_to_s3_arn |  |
+| cloudwatch_to_firehose_arn | ARN of the firehose to s3 role |
+| firehose_to_s3_arn | ARN of the cloudwatch to firehose role |
 
