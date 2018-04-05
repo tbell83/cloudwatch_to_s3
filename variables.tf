@@ -38,6 +38,6 @@ variable "target_bucket_prefix" {
 
 variable "count" {
   description = "https://github.com/hashicorp/terraform/issues/953"
-  type        = "int"
+  type        = "string"
   default     = 1
 }

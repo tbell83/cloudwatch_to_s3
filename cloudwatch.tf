@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_log_subscription_filter" "subscription_filter" {
-  count = "${var.count == 0 ? 0 : length(var.logs)}"
+  count = "${var.count == "0" ? 0 : length(var.logs)}"
 
   name            = "${var.mod_prefix}_cloudwatch_logfilter_${count.index}"
   role_arn        = "${aws_iam_role.cloudwatch_to_firehose.arn}"
