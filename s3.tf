@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "cloudwatch_logging_bucket" {
   count  = "${var.count == "0" ? 0 : var.target_bucket_arn != "0" ? 0 : 1}"
-  bucket = "${var.mod_prefix}_cloudwatch_logging_bucket"
+  bucket = "${var.name}_cloudwatch_logging_bucket"
   tags   = "${var.tags}"
 }
 

@@ -15,7 +15,7 @@ This module creates the AWS infrastructure required to epxort Cloudwatch log eve
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | logs | Map of log group names and associated filter patterns, and the s3 prefix.  These values are used to populate the `log_group_name` and `filter_pattern` values of the `aws_cloudwatch_log_subscription_filter` as well as `prefix` value of the corresponding `aws_kinesis_firehose_delivery_stream` | map | - | yes |
-| mod_prefix | Prefix for module resource names | string | `cwl` | no |
+| name | Prefix for module resource names | string | `cwl` | no |
 | s3_access_uids | Unique IDs of users/roles granted access to S3 bucket | list | - | yes |
 | tags | tags | map | `<map>` | no |
 | target_bucket_arn | ARN of target bucket | string | `0` | no |

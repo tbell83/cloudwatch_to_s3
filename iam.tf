@@ -1,12 +1,12 @@
 resource "aws_iam_role" "firehose_to_s3" {
   count              = "${var.count == "0" ? 0 : 1}"
-  name               = "${var.mod_prefix}_firehose_to_s3"
+  name               = "${var.name}_firehose_to_s3"
   assume_role_policy = "${data.aws_iam_policy_document.firehose_assume_role.json}"
 }
 
 resource "aws_iam_policy" "firehose_s3_access" {
   count  = "${var.count == "0" ? 0 : 1}"
-  name   = "${var.mod_prefix}_firehose_s3_access"
+  name   = "${var.name}_firehose_s3_access"
   policy = "${data.aws_iam_policy_document.firehose_s3_access.json}"
 }
 
@@ -53,7 +53,7 @@ resource "aws_iam_role_policy_attachment" "cloudwatch_s3_access-firehose_to_s3" 
 
 resource "aws_iam_role" "cloudwatch_to_firehose" {
   count              = "${var.count == "0" ? 0 : 1}"
-  name               = "${var.mod_prefix}_cloudwatch_to_firehose"
+  name               = "${var.name}_cloudwatch_to_firehose"
   assume_role_policy = "${data.aws_iam_policy_document.cloudwatch_assume_role.json}"
 }
 
@@ -72,7 +72,7 @@ data "aws_iam_policy_document" "cloudwatch_assume_role" {
 
 resource "aws_iam_policy" "firehose_access" {
   count  = "${var.count == "0" ? 0 : 1}"
-  name   = "${var.mod_prefix}_firehose_access"
+  name   = "${var.name}_firehose_access"
   policy = "${data.aws_iam_policy_document.firehose_access.json}"
 }
 

@@ -1,6 +1,13 @@
-variable "s3_access_uids" {
-  description = "Unique IDs of users/roles granted access to S3 bucket"
-  type        = "list"
+variable "count" {
+  description = "https://github.com/hashicorp/terraform/issues/953"
+  type        = "string"
+  default     = 1
+}
+
+variable "compression_method" {
+  description = "valid types: [ZIP, Snappy, GZIP, UNCOMPRESSED]"
+  type        = "string"
+  default     = "GZIP"
 }
 
 variable "logs" {
@@ -8,10 +15,15 @@ variable "logs" {
   type        = "map"
 }
 
-variable "mod_prefix" {
+variable "name" {
   description = "Prefix for module resource names"
   type        = "string"
   default     = "cwl"
+}
+
+variable "s3_access_uids" {
+  description = "Unique IDs of users/roles granted access to S3 bucket"
+  type        = "list"
 }
 
 variable "tags" {
@@ -34,16 +46,4 @@ variable "target_bucket_prefix" {
   description = "Prefix for logs being sent to target bucket"
   type        = "string"
   default     = "0"
-}
-
-variable "count" {
-  description = "https://github.com/hashicorp/terraform/issues/953"
-  type        = "string"
-  default     = 1
-}
-
-variable "compression_method" {
-  description = "valid types: [ZIP, Snappy, GZIP, UNCOMPRESSED]"
-  type        = "string"
-  default     = "GZIP"
 }
