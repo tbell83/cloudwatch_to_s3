@@ -6,4 +6,5 @@ resource "aws_cloudwatch_log_subscription_filter" "subscription_filter" {
   log_group_name  = "${element(var.logs[count.index], 0)}"
   filter_pattern  = "${element(var.logs[count.index], 1)}"
   destination_arn = "${aws_kinesis_firehose_delivery_stream.cloudwatch_to_s3_stream.*.arn[count.index]}"
+  distribution    = "${var.subscription_filter_distribution}"
 }

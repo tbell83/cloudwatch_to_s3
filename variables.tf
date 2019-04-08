@@ -47,3 +47,9 @@ variable "target_bucket_prefix" {
   type        = "string"
   default     = "0"
 }
+
+variable "subscription_filter_distribution" {
+  description = "The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are 'Random' and 'ByLogStream'. Defaults to 'ByLogStream'."
+  type        = "string"
+  default     = "ByLogStream"
+}

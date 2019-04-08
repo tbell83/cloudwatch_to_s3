@@ -20,6 +20,7 @@ This module creates the AWS infrastructure required to epxort Cloudwatch log eve
 | tags | tags | map | `<map>` | no |
 | target_bucket_arn | ARN of target bucket | string | `0` | no |
 | target_bucket_prefix | Prefix for logs being sent to target bucket | string | `0` | no |
+| subscription_filter_distribution | The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are 'Random' and 'ByLogStream'. | string | `ByLogStream` | no |
 
 ## Outputs
 
@@ -27,4 +28,3 @@ This module creates the AWS infrastructure required to epxort Cloudwatch log eve
 |------|-------------|
 | cloudwatch_to_firehose_arn | ARN of the firehose to s3 role |
 | firehose_to_s3_arn | ARN of the cloudwatch to firehose role |
-
