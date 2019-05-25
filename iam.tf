@@ -73,7 +73,7 @@ data "aws_iam_policy_document" "cloudwatch_assume_role" {
 resource "aws_iam_policy" "firehose_access" {
   count  = "${var.mod_count == "0" ? 0 : 1}"
   name   = "${var.name}_firehose_access"
-  policy = "${data.aws_iam_policy_document.firehose_access.json}"
+  policy = "${join("", data.aws_iam_policy_document.firehose_access.*.json)}"
 }
 
 data "aws_iam_policy_document" "firehose_access" {
