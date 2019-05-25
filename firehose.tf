@@ -6,7 +6,7 @@ resource "aws_kinesis_firehose_delivery_stream" "cloudwatch_to_s3_stream" {
 
   extended_s3_configuration {
     prefix             = "${var.target_bucket_prefix == "0" ? "" : "${var.target_bucket_prefix}/"}${element(var.logs[count.index], 2)}/"
-    role_arn           = "${aws_iam_role.firehose_to_s3.arn}"
+    role_arn           = "${join("", aws_iam_role.firehose_to_s3.*.arn)}"
     bucket_arn         = "${var.target_bucket_arn == "0" ? "${join(",", aws_s3_bucket.cloudwatch_logging_bucket.*.id)}" : "${var.target_bucket_arn}"}"
     compression_format = "${var.compression_method}"
   }

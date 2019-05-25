@@ -47,8 +47,8 @@ data "aws_iam_policy_document" "firehose_s3_access" {
 
 resource "aws_iam_role_policy_attachment" "cloudwatch_s3_access-firehose_to_s3" {
   count      = "${var.mod_count == "0" ? 0 : 1}"
-  role       = "${aws_iam_role.firehose_to_s3.name}"
-  policy_arn = "${aws_iam_policy.firehose_s3_access.arn}"
+  role       = "${join("", aws_iam_role.firehose_to_s3.*.name)}"
+  policy_arn = "${join("", aws_iam_policy.firehose_s3_access.*.arn)}"
 }
 
 resource "aws_iam_role" "cloudwatch_to_firehose" {
@@ -88,12 +88,12 @@ data "aws_iam_policy_document" "firehose_access" {
   statement {
     sid       = "Passrole"
     actions   = ["iam:PassRole"]
-    resources = ["${aws_iam_role.cloudwatch_to_firehose.arn}"]
+    resources = ["${join("", aws_iam_role.cloudwatch_to_firehose.*.arn)}"]
   }
 }
 
 resource "aws_iam_role_policy_attachment" "cloudwatch_to_firehose-firehose_access" {
   count      = "${var.mod_count == "0" ? 0 : 1}"
-  role       = "${aws_iam_role.cloudwatch_to_firehose.name}"
-  policy_arn = "${aws_iam_policy.firehose_access.arn}"
+  role       = "${join("", aws_iam_role.cloudwatch_to_firehose.*.name)}"
+  policy_arn = "${join("", aws_iam_policy.firehose_access.*.arn)}"
 }
