@@ -26,10 +26,10 @@ data "aws_iam_policy_document" "cloudwatch_logging_bucket" {
       test     = "StringNotLike"
       variable = "aws:userId"
 
-      values = ["${compact(list(
+      values = "${compact(concat(
         "${var.s3_access_uids}",
-        "${join("", aws_iam_role.firehose_to_s3.*.unique_id)}"
-      ))}"]
+        "${aws_iam_role.firehose_to_s3.*.unique_id}"
+      ))}"
     }
   }
 }
