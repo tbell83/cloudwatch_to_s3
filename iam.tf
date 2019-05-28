@@ -82,7 +82,7 @@ data "aws_iam_policy_document" "firehose_access" {
   statement {
     sid       = "FirehoseAccess"
     actions   = ["firehose:*"]
-    resources = ["${aws_kinesis_firehose_delivery_stream.cloudwatch_to_s3_stream.*.arn}"]
+    resources = "${aws_kinesis_firehose_delivery_stream.cloudwatch_to_s3_stream.*.arn}"
   }
 
   statement {
